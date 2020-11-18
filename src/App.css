@@ -1,7 +1,5 @@
 body {
-  font: 14px"
-CenturyGothic"
-, Futura, sans-serif;
+  font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
 }
 
@@ -11,9 +9,7 @@ ol, ul {
 
 .board-row:after {
   clear: both;
-  content: "
-"
-;
+  content: "";
   display: table;
 }
 
@@ -23,7 +19,7 @@ ol, ul {
 
 .square {
   background: #fff;
-  border: 1pxsolid#999;
+  border: 1px solid #999;
   float: left;
   font-size: 24px;
   font-weight: bold;
@@ -40,7 +36,7 @@ ol, ul {
   outline: none;
 }
 
-.kbd-navigation.square:focus {
+.kbd-navigation .square:focus {
   background: #ddd;
 }
 
