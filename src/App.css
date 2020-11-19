@@ -48,3 +48,16 @@ ol, ul {
 .game-info {
   margin-left: 20px;
 }
+
+.btn-move-jump {
+
+}
+
+.move-pos {
+
+}
+
+.history-item {
+  display: flex;
+  flex-direction: row;
+}
