@@ -5,6 +5,7 @@ class Board extends React.Component {
     renderSquare(i) {
         return (
             <Square
+                key={i}
                 value={this.props.squares[i]}
                 onClick={() => this.props.onClick(i)}
                 isSelected={i === this.props.selectedSquare}
@@ -16,10 +17,10 @@ class Board extends React.Component {
         const bordRows = new Array(3);
         for (var i = 0; i < 9;) {
             var rowSquares = new Array(3);
-            for (var j = 0; j < 3; i++, j++) {
+            for (let j = 0; j < 3; i++, j++) {
                 rowSquares.push(this.renderSquare(i));
             }
-            bordRows.push(<div className="board-row"> {rowSquares} </div>)
+            bordRows.push(<div className="board-row" key={i/3}> {rowSquares} </div>)
         }
         return (
             <div>
