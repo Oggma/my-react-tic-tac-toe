@@ -1,5 +1,6 @@
 import React from 'react';
 import Board from './Board'
+import History from './History';
 
 class Game extends React.Component {
     constructor(props) {
@@ -50,22 +51,7 @@ class Game extends React.Component {
             status = winner + ' is winner!';
         } else {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-        }
-
-        const moves = history.map((step, move) => {
-            const desc = move ?
-                'Jumo to move #' + move :
-                'Jump to start';
-            const pos = history[move].movePos;
-            return (
-                <li key={move}>
-                    <div className="history-item">
-                        <button className="btn-move-jump" onClick={() => this.jumpTo(move)}>{desc}</button>
-                        {move ? <div className="move-pos">{'(' + pos.col + ',' + pos.row + ')'}</div> : ''}
-                    </div>
-                </li>
-            )
-        })
+        }        
 
         return (
             <div className="game">
@@ -78,7 +64,7 @@ class Game extends React.Component {
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
-                    <ol>{moves}</ol>
+                    <ol><History history={history} onJumpTo={(move) => this.jumpTo(move)} /></ol>
                 </div>
             </div>
         );
