@@ -27,3 +27,4 @@ jobs:
           build_dir: build
         env:
           super_secret: ${{ secrets.REPO_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
