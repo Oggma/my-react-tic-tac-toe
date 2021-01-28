@@ -1,5 +1,6 @@
 import React from 'react';
 import Board from './Board'
+import History from './History';
 
 class Game extends React.Component {
     constructor(props) {
@@ -7,6 +8,7 @@ class Game extends React.Component {
         this.state = {
             history: [{
                 squares: Array(9).fill(null),
+                movePos: null,
             }],
             stepNumper: 0,
             xIsNext: true,
@@ -25,7 +27,9 @@ class Game extends React.Component {
         this.setState({
             history: history.concat([{
                 squares: squares,
+                movePos: calculateLastMovePosition(i),
             }]),
+            selectedSquare: i,
             stepNumper: history.length,
             xIsNext: !this.state.xIsNext
         });
@@ -47,18 +51,7 @@ class Game extends React.Component {
             status = winner + ' is winner!';
         } else {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-        }
-
-        const moves = history.map((step, move) => {
-            const desc = move ?
-                'Jumo to move #' + move :
-                'Jump to start';
-            return (
-                <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
-                </li>
-            )
-        })
+        }        
 
         return (
             <div className="game">
@@ -66,11 +59,12 @@ class Game extends React.Component {
                     <Board
                         squares={current.squares}
                         onClick={(i) => this.handleClick(i)}
+                        selectedSquare={current.movePos?.index}
                     />
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
-                    <ol>{moves}</ol>
+                    <ol><History history={history} onJumpTo={(move) => this.jumpTo(move)} /></ol>
                 </div>
             </div>
         );
@@ -96,4 +90,13 @@ function calculateWinner(squares) {
     }
     return null;
 }
+
+function calculateLastMovePosition(i) {
+    return {
+        col: ((i % 3) + 1),
+        row: (parseInt(i / 3) + 1),
+        index: i
+    }
+}
+
 export default Game;
