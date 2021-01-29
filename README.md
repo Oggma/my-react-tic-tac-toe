@@ -1,4 +1,4 @@
-Simple tic-tac-toe game just to try React.
+Simple tic-tac-toe game just to try React and gh-pages.
 
 
 ## gh-pages link
