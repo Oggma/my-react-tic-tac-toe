@@ -1,3 +1,6 @@
+Simple tic-tac-toe game just to try React.
+
+
 ## gh-pages link
 
 https://oggma.github.io/my-react-tic-tac-toe/
